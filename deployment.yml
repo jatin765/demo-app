@@ -1,27 +1,30 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: pipeline-deployment
+  name: your-deployment
+  labels:
+    app: your-app
 spec:
-  strategy:
-    type: RollingUpdate
-    rollingUpdate:
-      maxSurge: 1
-      maxUnavailable: 1
-  replicas: 2
+  replicas: 3
   selector:
     matchLabels:
-      app: pipeline
+      app: your-app
   template:
     metadata:
       labels:
-        app: pipeline
+        app: your-app
     spec:
       containers:
-      - name: pipeline-container
+      - name: your-container
         image: jatin765/pipeline:latest
         ports:
         - containerPort: 80
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+
 ---
 apiVersion: v1
 kind: Service
@@ -29,7 +32,7 @@ metadata:
   name: pipeline-service
 spec:
   selector:
-    app: pipeline
+    app: your-app
   ports:
     - protocol: TCP
       port: 80
