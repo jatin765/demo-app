@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: your-container
-        image: jatin765/pipeline:${BUILD_TAG}
+        image: jatin765/pipeline:latest
         ports:
         - containerPort: 80
   strategy:
