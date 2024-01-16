@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: your-container
-        image: jatin765/pipeline:latest
+        image: jatin765/java:latest
         ports:
         - containerPort: 80
   strategy:
